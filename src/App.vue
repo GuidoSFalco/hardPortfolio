@@ -61,7 +61,7 @@
                   <v-icon>mdi-briefcase</v-icon>
                 </v-btn>
               </template>
-              <span>Manfred</span>
+              <span>MI CV</span>
             </v-tooltip>
 
             </v-app-bar>
@@ -98,7 +98,7 @@
 // import { mapState } from 'vuex';
 import PaginaPrincipal from './views/PaginaPrincipal.vue'
 import CodigoMorse from './views/CodigoMorse.vue'
-import Abaco from './views/Abaco.vue'
+import Abaco from './views/Abaco/Abaco.vue'
 
 
 export default {

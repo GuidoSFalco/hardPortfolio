@@ -1,7 +1,7 @@
 <template>
     <div style="height: 100%">
         <v-row style="height: 90%">
-            <span>Abaco</span>
+            <!-- <span>Abaco</span> -->
 
             <abaco></abaco>
 
@@ -26,17 +26,9 @@ export default {
   watch: {
   },
   mounted() {
-    this.drawAbaco();
   },
   methods: {
-    drawAbaco() {
-      const canvas = this.$refs.abacoCanvas;
-      const ctx = canvas.getContext("2d");
 
-      // Tu código JavaScript para dibujar el ábaco aquí
-      // Puedes copiar el código que proporcioné en la respuesta anterior
-
-    },
   },
 
 };
