@@ -2,7 +2,7 @@
   <v-app>
       <div id="app">
         <template>
-          <v-card class="mx-auto overflow-hidden" height="100%">
+          <v-card class="mx-auto overflow-hidden" height="100%" style="background: #F5F5F5;">
 
             <v-app-bar color="deep-purple accent-4" dark prominent>
               <v-app-bar-nav-icon @click.stop="lateralMenu = !lateralMenu"></v-app-bar-nav-icon>
@@ -10,8 +10,8 @@
                 <v-icon>mdi-arrow-u-left-top</v-icon>
               </v-btn>
 
-              <v-toolbar-title>{{ $store.state.page.nameActualPage }}</v-toolbar-title>
-              <span class="mt-2 mx-auto">MAS INFO? TE DEJO MIS REDES PARA CONTACTARME
+              <v-toolbar-title>{{ $store.state.page.nameActualPageEspanol }}</v-toolbar-title>
+              <!-- <span class="mt-2 mx-auto">MAS INFO? TE DEJO MIS REDES PARA CONTACTARME
 
                 <v-icon color="blue" class="mb-1">mdi-play</v-icon>
                 <v-icon color="blue" class="mb-1">mdi-play</v-icon>
@@ -27,8 +27,8 @@
                 <v-icon color="blue" class="mb-1">mdi-play</v-icon>
                 <v-icon color="blue" class="mb-1">mdi-play</v-icon>
                 <v-icon color="blue" class="mb-1">mdi-play</v-icon>
-              </span>
-              <!-- <v-spacer></v-spacer> -->
+              </span> -->
+              <v-spacer></v-spacer>
 
               <!-- <v-btn icon href="https://www.linkedin.com/in/guido-falco-463a9a1bb/" target="_blank">
                 <v-icon>mdi-linkedin</v-icon>
@@ -64,6 +64,34 @@
               <span>MI CV</span>
             </v-tooltip>
 
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn 
+                icon 
+                v-bind="attrs"
+                v-on="on"
+                @click="translateOptions = !translateOptions"
+                >
+                  <v-icon>mdi-translate</v-icon>
+                </v-btn>
+              </template>
+              <span>Traducir</span>
+            </v-tooltip>
+            <v-card class="mt-1" color="white" v-if="translateOptions">
+              <v-btn elevation="0" color="transparent" 
+              :color="`${(languageChose) ? 'white' : 'green'}`"
+              :class="`${(languageChose) ? 'black--text' : 'white--text'}`"
+              @click="translateOptions = !translateOptions, languageChose = false, translation = false">
+                ES
+              </v-btn>
+              <v-btn elevation="0" class="black--text" color="transparent"
+              :color="`${(languageChose) ? 'green' : 'white'}`"
+              :class="`${(languageChose) ? 'white--text' : 'black--text'}`"
+              @click="translateOptions = !translateOptions, languageChose = true, translation = true">
+                EN
+              </v-btn>
+            </v-card>
+
             </v-app-bar>
 
             <v-navigation-drawer v-model="lateralMenu" absolute bottom temporary>
@@ -96,6 +124,7 @@
 
 <script>
 // import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 import PaginaPrincipal from './views/PaginaPrincipal.vue'
 import CodigoMorse from './views/CodigoMorse.vue'
 import Abaco from './views/Abaco/Abaco.vue'
@@ -114,6 +143,9 @@ export default {
     group: null,
     ancho: null,
 
+    translateOptions: false,
+    languageChose: false, //false = español
+
     menuItems: [
       { title: 'Inicio', url: '', selected: true },
       { title: 'Codigo Morse', url: 'codigomorse', icon: 'mdi-head-dots-horizontal', selected: false },
@@ -127,6 +159,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(['translation']),
   },
 
   methods: {
@@ -143,6 +176,7 @@ export default {
 
         this.$store.state.page.urlActualPage = this.menuItems[index].url
         this.$store.state.page.nameActualPage = this.menuItems[index].title
+        console.log(this.$store.state.page.urlActualPage)
         // this.$router.push(`/${this.menuItems[index].url}`)
       }
     },
