@@ -487,8 +487,6 @@
     width: 100%; 
     height: 100%; 
     border-radius: 35%;
-    /* box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.50);
-    -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.50);
-    -moz-box-shadow: 0px 5px 24px 0px rgba(0,0,0,0.50); */
+    box-shadow: 5px 5px 10px #7f7f7f !important;
   }
 </style>

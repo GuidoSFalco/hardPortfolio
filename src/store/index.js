@@ -8,11 +8,13 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     page: {
-      nameActualPage: 'Inicio',
+      nameActualPageEspanol: 'Inicio',
+      nameActualPageIngles: 'Start',
       urlActualPage: '',
     },
     // actualPage: '',
     startPage: '',
+    translation: false,
   },
   getters: {
   },
